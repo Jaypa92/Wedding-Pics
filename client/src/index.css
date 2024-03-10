@@ -16,7 +16,7 @@
 }
 
 nav{
-  background-color: rgb(72, 3, 136);
+  background-color: rgb(19, 160, 83);
   color: #fff;
   padding: 1rem 5rem;
 }
@@ -27,7 +27,7 @@ nav{
 }
 
 .button{
-  color: rgb(67, 1, 128);
+  color: rgb(19, 160, 83);
   font-size: 60px;
   height: 65px;
   position: fixed;
