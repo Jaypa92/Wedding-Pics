@@ -23,4 +23,10 @@ router.post('/api/save', uploadMiddleware.single('photo'), (req, res) => {
     .catch((err) => console.log(err));
 })
 
+router.delete('/api/delete/:id', async (req, res) => {
+    UploadModel.deleteOne({_id:req.params.id})
+    .then(pic => res.json(pic))
+    .catch((err) => res.status(400).json(err))
+})
+
 module.exports = router;
