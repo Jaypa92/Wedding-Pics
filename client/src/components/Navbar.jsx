@@ -4,7 +4,7 @@ const Navbar = () => {
     return (
     <nav>
         <div className="nav-logo">
-            Photo Gallery App
+            Wedding Photo Gallery
         </div>
     </nav>
     )
