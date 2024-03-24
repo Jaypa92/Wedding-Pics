@@ -9,16 +9,17 @@ router.get('/api/get', async (req, res) => {
     res.send(allPhotos);
 })
 
-router.post('/api/save', uploadMiddleware.single('photo'), (req, res) => {
-    const photo = req.file.filename;
-
-    UploadModel.create({photo})
-    .then((data) => {
-        console.log('Uploaded Successfully...');
-        console.log(data);
-        res.send(data);
-    })
-    .catch((err) => console.log(err));
+router.post('/api/save', uploadMiddleware.array('photo'), async (req, res) => {
+        try{
+            req.files.forEach(file => {
+                const photo = file.filename;
+                UploadModel.create({photo});
+            })
+            res.status(200).send("Uploaded successfully");
+        } catch (error) {
+            console.error("Error uploading files", error);
+            res.status(500).send("Error!");
+        }
 })
 
 router.delete('/api/delete/:id', async (req, res) => {
