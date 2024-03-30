@@ -17,14 +17,18 @@ const Grid = ({photos}) => {
 
     return (
         <>
-        <h1>Our Gallery</h1>
+        <h1>Our Gallery:</h1>
         <div className="grid">
             {photos.map(({photo, _id}) => (
                 <div key={_id} className='box'>
                     <div className='grid_item'>
-                        <img 
-                        src={`http://localhost:5000/uploads/${photo}`} 
-                        alt="grid_image" />
+                        {photo.includes('.jpg') || photo.includes('.jpeg') || photo.includes('.png') ? (
+                            <img 
+                            src={`http://localhost:5000/uploads/${photo}`} 
+                            alt="grid_image" />
+                        ) : photo.includes('.mp4') || photo.includes('.av1') || photo.includes('.mov') ? (
+                            <video src={`http://localhost:5000/uploads/${photo}`} controls></video>
+                        ) : null}
                     </div>
                     <button onClick={(e) => {handleDelete(e,_id)}} id='download'>Delete</button>
                 </div>
