@@ -9,6 +9,7 @@ const Main = () => {
 
     const [photos, setPhotos] = useState([]);
     const [updateUI, setUpdateUI] = useState('');
+    const [showIntro, setIntro] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost:5000/api/get')
@@ -17,11 +18,31 @@ const Main = () => {
                 setPhotos(res.data)
             })
             .catch((err) => console.log(err))
+
+            const introState = localStorage.getItem('showIntro');
+            if(introState === null) {
+                setIntro(true);
+                localStorage.setItem('showIntro','true');
+            }
+
     }, [updateUI]);
 
+    useEffect(() => {
+
+        const handlebeforeunload = () => {
+            localStorage.removeItem('showIntro');
+        }
+
+        window.addEventListener('beforeunload', handlebeforeunload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handlebeforeunload);
+        }
+
+    }, []);
+
     const handleOK = (e) => {
-        const intro = document.querySelector('.intro');
-        intro.style.visibility = 'hidden';
+            setIntro(false);
     }
 
     return (
@@ -29,6 +50,7 @@ const Main = () => {
             <Navbar></Navbar>
             <Grid photos={photos}></Grid>
             <Button setUpdateUI={setUpdateUI}></Button>
+            { showIntro && (
             <div className='intro' style={{visibility: 'visible'}} >
                 <div>
                     <h1 style={{fontSize:'100px',color:'white'}}><span><img  src='/eiffel-tower-white.png' alt='tower' /></span>Parris<span><img src='/eiffel-tower-white.png' alt='tower' /></span></h1>
@@ -37,6 +59,8 @@ const Main = () => {
                     <button onClick={handleOK} >OK</button>
                 </div>
             </div>
+            )
+            }
         </div>
     )
 }
