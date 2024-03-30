@@ -16,6 +16,10 @@ const Button = ({setUpdateUI}) => {
         
     }, [selectedFiles]);
 
+    const handleClose = (e) => {
+        setSelectedFiles([]);
+    }
+
     const handleUpload = async () => {
         
         const formData = new FormData();
@@ -35,6 +39,11 @@ const Button = ({setUpdateUI}) => {
         }
         }
 
+    const previewDel = (indexDel) => {
+        const updatedFiles = selectedFiles.filter((file, index) => index !== indexDel);
+        setSelectedFiles(updatedFiles);
+    }
+
     return (
     <div>
         <label className='button' htmlFor='file_picker'>
@@ -47,7 +56,28 @@ const Button = ({setUpdateUI}) => {
                 id='file_picker' 
                 onChange={handleChange} />
         </label>
-        <button onClick={handleUpload}>Upload</button>
+        {selectedFiles.length > 0 && (
+            <div className='container' >
+                <div className='head'>
+                    <img src='/close.png' alt='close' onClick={handleClose} />
+                </div>
+                <div className='preview' >
+                    {selectedFiles.map((file, index) => (
+                        <div className='preview_grid' key={file.name}>
+                            <div className='preview_item' >
+                                {file.name.includes('.jpg') || file.name.includes('.jpeg') || file.name.includes('.png') ? (
+                                    <img src={URL.createObjectURL(file)} alt="file"/>
+                                    ) : file.name.includes('.mp4') || file.name.includes('.mov') || file.name.includes('.av1') ? (
+                                        <video src={URL.createObjectURL(file)} type={file.type} controls></video>
+                                        ): null}
+                            </div>
+                            <button className='delete' onClick={() => previewDel(index)} >Delete</button>
+                        </div>
+                        ))}
+                </div>
+                <button className='upload' onClick={handleUpload}>Upload</button>
+            </div>
+        )}
     </div>
     )
 }
