@@ -46,7 +46,7 @@ const Main = () => {
     }
 
     return (
-        <div>
+        <div className='body'>
             <Navbar></Navbar>
             <Grid photos={photos}></Grid>
             <Button setUpdateUI={setUpdateUI}></Button>
@@ -54,8 +54,8 @@ const Main = () => {
             <div className='intro' style={{visibility: 'visible'}} >
                 <div>
                     <h1 style={{fontSize:'100px',color:'white'}}><span><img  src='/eiffel-tower-white.png' alt='tower' /></span>Parris<span><img src='/eiffel-tower-white.png' alt='tower' /></span></h1>
-                    <h1>Welcome to the photo gallery of the Parris family!</h1>
-                    <h1>If you have any files to share, please upload them for all to see!</h1>
+                    <h1>Welcome to the photo gallery of the newlywed Parris family!</h1>
+                    <h1>If you have any files to share from the wedding, please upload them for all to see and thank you again for attending!</h1>
                     <button onClick={handleOK} >OK</button>
                 </div>
             </div>
