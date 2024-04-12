@@ -17,7 +17,7 @@ const Grid = ({photos}) => {
 
     return (
         <>
-        <h1>Our Gallery:</h1>
+        <h1 className='heading' >Our Gallery</h1>
         <div className="grid">
             {photos.map(({photo, _id}) => (
                 <div key={_id} className='box'>
@@ -30,7 +30,6 @@ const Grid = ({photos}) => {
                             <video src={`http://localhost:5000/uploads/${photo}`} controls></video>
                         ) : null}
                     </div>
-                    <button onClick={(e) => {handleDelete(e,_id)}} id='download'>Delete</button>
                 </div>
             ))}
         </div>

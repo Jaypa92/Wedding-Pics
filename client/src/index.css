@@ -6,8 +6,20 @@
   box-sizing: border-box;
 }
 
-body{
-  background-color: #A4B792;
+
+
+.body::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/public/eucalyptus.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(70%);
+  z-index: -1;
 }
 
 #download{
@@ -25,18 +37,27 @@ body{
 }
 
 nav{
-  background-color: #202D10;
-  color: #fff;
-  padding: 1rem 5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(50,50,50,0.2);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
 }
 
 .nav-logo{
   letter-spacing: 1px;
   font-size: 20px;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-top: 10px;
+  color: white;
 }
 
 .button{
-  color: #202D10;
+  color: #6c8478;
   font-size: 60px;
   height: 65px;
   position: fixed;
@@ -47,8 +68,8 @@ nav{
 }
 
 .container{
-  /* background-color: #A4B792; */
-  background-color: rgba(164, 183, 146, 1);
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
   position: fixed;
   top: 50%;
   left:50%;
@@ -74,23 +95,25 @@ nav{
   cursor: pointer;
   border-radius: 8%;
   border: 1px solid white;
-  background-color: #202D10;
+  background-color:#6c8478;
   color: white;
   height: 8%;
 }
 
 .grid{
+  margin-top: 5%;
   display:grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   justify-content: center;
-  align-items: center;
   gap: 1rem;
-  padding: 3%;
-  padding-top: 0;
+  padding: 2%;
+  background-color: rgb(200,200,200);
+  width: 100%;
+  height: 100vh;
 }
 
 .grid_item {
-  height: 16rem;
+  height: 17rem;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 0px 10px rgba(0,0,0,0.25);
@@ -126,11 +149,18 @@ nav{
 
 .intro h1{
   font-family: "Petit formal script", cursive;
-
 }
 
 .intro button{
   display: inline;
+  width: 10%;
+  height: 2rem;
+  margin-top: 5%;
+  cursor: pointer;
+  background-color:#6c8478;
+  color: white;
+  border: 2px solid white;
+  font-weight: bold;
 }
 
 video{
@@ -140,10 +170,15 @@ video{
 h1{
   font-size: 2.4rem;
   font-weight: 600;
-  margin: 2rem 5rem;
   width: auto;
 }
 
+.heading{
+text-align: center;
+padding-top: 5%;
+font-weight: bold;
+color: white;
+}
 
 .preview{
   display: grid;
@@ -178,8 +213,8 @@ h1{
   height: 10%;
   border-radius: 10px;
   color: white;
-  background-color: #202D10;
-  border: 1px solid white;
+  background-color:#6c8478;
+  border: 2px solid white;
   font-size: 150%;
   cursor: pointer;
 }
@@ -187,5 +222,11 @@ h1{
 @media screen and (max-width: 768px) {
   .grid{
     grid-template-columns:1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    display: none; /* Hide the navigation bar on screens smaller than 768px */
   }
 }
