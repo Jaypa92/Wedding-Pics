@@ -180,6 +180,11 @@ font-weight: bold;
 color: white;
 }
 
+.name{
+  font-size: 4.5rem;
+  color: white;
+}
+
 .preview{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -229,4 +234,13 @@ color: white;
   nav {
     display: none; /* Hide the navigation bar on screens smaller than 768px */
   }
+  .intro-box{
+    height: 90%;
+    width: 90%;
+    overflow-y: auto;
+  }
+.name img{
+  height: 100%;
+  width: 13%;
+}
 }
