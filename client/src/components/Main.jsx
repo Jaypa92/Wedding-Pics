@@ -15,7 +15,7 @@ const Main = () => {
         axios.get('http://localhost:5000/api/get')
             .then((res) => {
                 console.log(res.data);
-                setPhotos(res.data)
+                setPhotos(res.data);
             })
             .catch((err) => console.log(err))
 
