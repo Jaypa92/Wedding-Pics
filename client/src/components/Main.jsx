@@ -13,23 +13,6 @@ const Main = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:5000/api/get')
-            .then((res) => {
-                console.log(res.data);
-                setPhotos(res.data);
-            })
-            .catch((err) => console.log(err))
-
-            const introState = localStorage.getItem('showIntro');
-            if(introState === null) {
-                setIntro(true);
-                localStorage.setItem('showIntro','true');
-            }
-
-    }, [updateUI]);
-
-    useEffect(() => {
-
         const handlebeforeunload = () => {
             localStorage.removeItem('showIntro');
         }
