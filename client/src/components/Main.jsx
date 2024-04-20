@@ -12,7 +12,7 @@ const Main = () => {
     const [showIntro, setIntro] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/get')
+        axios.get('http://18.116.164.180/api/get')
             .then((res) => {
                 console.log(res.data);
                 setPhotos(res.data);
