@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/api/get', async (req, res) => {
     // const allPhotos = await UploadModel.find().sort({createdAt: 'descending'});
     // console.log(allPhotos.length);
-    res.send("Hello World");
+    res.send(console.log("Hello World!"));
 })
 
 router.post('/api/save', uploadMiddleware.array('photo'), async (req, res) => {
