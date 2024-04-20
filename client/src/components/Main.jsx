@@ -12,6 +12,7 @@ const Main = () => {
     const [showIntro, setIntro] = useState(false);
 
     useEffect(() => {
+
         axios.get('http://localhost:5000/api/get')
             .then((res) => {
                 console.log(res.data);
