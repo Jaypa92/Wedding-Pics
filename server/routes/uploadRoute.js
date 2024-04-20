@@ -11,6 +11,11 @@ router.get('/api/get', async (req, res) => {
 
 router.post('/api/save', uploadMiddleware.array('photo'), async (req, res) => {
         try{
+
+            if(!req.files || req.files.length === 0){
+                return res.status(400).send('No files uploaded');
+            }
+
             req.files.forEach(file => {
                 const photo = file.filename;
                 UploadModel.create({photo});
