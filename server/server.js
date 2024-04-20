@@ -32,38 +32,38 @@ app.get("*", (req, res) => {
     )
 })
 
-// mongoose.connect(uri);
+mongoose.connect(uri);
 
-// const db = mongoose.connection;
+const db = mongoose.connection;
 
-// db.on('connected', () => {
-//     console.log('connected to mongodb');
-// });
+db.on('connected', () => {
+    console.log('connected to mongodb');
+});
 
-// db.on('error', (err) => {
-//     console.log("Error connecting to MongoDB", err);
-// });
+db.on('error', (err) => {
+    console.log("Error connecting to MongoDB", err);
+});
 
-// app.use(UploadRoute);
+app.use(UploadRoute);
 
-// app.listen(PORT, () => {
-//     console.log(`Server started at port: ${PORT}`);
-// })
+app.listen(PORT, () => {
+    console.log(`Server started at port: ${PORT}`);
+})
 
-// const User = mongoose.model('User', {
-//     userId: String,
-//     lastVisit: Date,
-// });
+const User = mongoose.model('User', {
+    userId: String,
+    lastVisit: Date,
+});
 
-// app.use(async (req, res, next) => {
-//     const userId = req.cookies.userId || createUserId();
+app.use(async (req, res, next) => {
+    const userId = req.cookies.userId || createUserId();
 
-//     await User.findOneAndUpdate({userId}, {lastVisit: new Date()}, {upsert: true} );
-//     res.cookie('userId', userId, {maxAge: 900000, httpOnly: true});
+    await User.findOneAndUpdate({userId}, {lastVisit: new Date()}, {upsert: true} );
+    res.cookie('userId', userId, {maxAge: 900000, httpOnly: true});
 
-//     next();
-// });
+    next();
+});
 
-// function createUserId(){
-//     return Math.random().toString(36).substring(7);
-// }
+function createUserId(){
+    return Math.random().toString(36).substring(7);
+}
