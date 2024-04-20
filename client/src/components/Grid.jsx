@@ -24,7 +24,7 @@ const Grid = ({photos}) => {
                     <div className='grid_item'>
                         {photo.includes('.jpg') || photo.includes('.jpeg') || photo.includes('.png') ? (
                             <img 
-                            src={`http://localhost:5000/uploads/${photo}`} 
+                            src={`http://18.216.28.90/uploads/${photo}`} 
                             alt="grid_image" />
                         ) : photo.includes('.mp4') || photo.includes('.av1') || photo.includes('.mov') ? (
                             <video src={`http://localhost:5000/uploads/${photo}`} controls></video>
