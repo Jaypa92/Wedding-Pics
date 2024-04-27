@@ -30,7 +30,7 @@ const Grid = ({photos}) => {
                             <video src={`http://18.216.28.90/uploads/${photo}`} controls></video>
                         ) : null}
                     </div>
-                    <button onClick={(e) => {handleDelete(e,_id)}} id='download'style={{display:'visible'}}>Delete</button>
+                    <button onClick={(e) => {handleDelete(e,_id)}} id='download'style={{display:'none'}}>Delete</button>
                 </div>
             ))}
         </div>
