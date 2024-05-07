@@ -48,7 +48,7 @@ const Main = () => {
 
     return (
         <div className='body'>
-            <Navbar></Navbar>
+            {!showIntro && <Navbar></Navbar>}
             <Grid photos={photos}></Grid>
             <Button setUpdateUI={setUpdateUI}></Button>
             { showIntro && (
