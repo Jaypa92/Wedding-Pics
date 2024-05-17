@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {AiFillPlusCircle} from 'react-icons/ai';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom';
 const Button = ({setUpdateUI}) => {
     const navigate = useNavigate();
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const fileInputRef = useRef(null);
 
     const handleChange = (e) => {
         const files = e.target.files;
@@ -13,11 +14,14 @@ const Button = ({setUpdateUI}) => {
     }
 
     useEffect(() => {
-        
+        console.log(selectedFiles);
     }, [selectedFiles]);
 
     const handleClose = (e) => {
         setSelectedFiles([]);
+        if(fileInputRef.current){
+            fileInputRef.current.value = '';
+        }
     }
 
     const handleUpload = async () => {
@@ -54,7 +58,8 @@ const Button = ({setUpdateUI}) => {
                 type='file' 
                 name='file_picker' 
                 id='file_picker' 
-                onChange={handleChange} />
+                onChange={handleChange} 
+                ref={fileInputRef}/>
         </label>
         {selectedFiles.length > 0 && (
             <div className='container' >
@@ -75,7 +80,9 @@ const Button = ({setUpdateUI}) => {
                         </div>
                         ))}
                 </div>
-                <button className='upload' onClick={handleUpload}>Upload</button>
+                <div className='upload-button'>
+                    <button className='upload' onClick={handleUpload}>Upload</button>
+                </div>
             </div>
         )}
     </div>
