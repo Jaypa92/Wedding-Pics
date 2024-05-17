@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')s;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 *{
   margin: 0;
@@ -86,7 +86,7 @@ nav{
   top: 50%;
   left:50%;
   transform: translate(-50%, -50%);
-  width: 60%;
+  width: 80%;
   height: 80%;
   border-radius: 6px;
   box-shadow: 0 0px 10px rgb(0,0,0,0.6);
@@ -109,7 +109,7 @@ nav{
   border: 1px solid white;
   background-color:#6c8478;
   color: white;
-  height: 8%;
+  height: 10%;
 }
 
 .grid{
@@ -121,8 +121,7 @@ nav{
   padding: 2%;
   background-color: rgb(200,200,200);
   width: 100%;
-  height: 100%;
-  grid-auto-rows: minmax(150px, 300px);
+  height: auto;
 }
 
 .grid_item {
@@ -205,7 +204,7 @@ margin-top: 3.5%;
 
 .preview{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
@@ -214,32 +213,40 @@ margin-top: 3.5%;
   height: 80%;
 }
 
+.preview_grid{
+  height: 250px;
+}
+
 .preview_item{
-  min-height: 10rem;
   width: 100%;
   border-radius: 6px;
   overflow:hidden;
   margin: 0 auto;
-  height: 6rem;
+  height: 80%;
   object-fit: cover;
 }
 
 .preview_item img, .preview_item video{
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .upload{
   display: block;
   margin: 0 auto;
   width: 50%;
-  height: 10%;
+  height: 100%;
   border-radius: 10px;
   color: white;
   background-color:#6c8478;
   border: 2px solid white;
   font-size: 150%;
   cursor: pointer;
+}
+
+.upload-button{
+  height: 10%;
 }
 
 @media screen and (max-width: 768px) {
@@ -276,6 +283,11 @@ margin-top: 3.5%;
     justify-content: center;
   }
 
+  .preview_grid{
+    height: 350px;
+    width: 100%;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -295,7 +307,6 @@ margin-top: 3.5%;
   .grid{
     grid-auto-rows: minmax(300px, 300px);
     align-items: center;
-    height: 100%;
     grid-template-columns: repeat(auto-fill, 300px);
   }
 
