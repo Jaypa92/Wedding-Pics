@@ -8,7 +8,7 @@ node_modules/
 *.log
 logs/
 
-# Build output (if using TypeScript or other build tools)
+# Build output
 dist/
 build/
 
@@ -17,7 +17,7 @@ build/
 Thumbs.db    # Windows
 *.swp        # Vim swap files
 
-# Coverage reports (if using Jest or similar tools)
+# Coverage reports
 coverage/
 
 # SSL keys or sensitive config files
