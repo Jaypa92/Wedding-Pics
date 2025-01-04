@@ -1,22 +1,31 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
-/.pnp
+# Node.js dependencies
+node_modules/
+
+# pnpm package manager files (if not using pnpm, you can remove these)
+.pnp
 .pnp.js
 
-# testing
-/coverage
+# Testing coverage reports
+coverage/
 
-# production
+# Production build output
+build/
 
-# misc
+# macOS system files
 .DS_Store
+
+# Environment files (React-specific)
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Miscellaneous
+Thumbs.db
+*.swp
