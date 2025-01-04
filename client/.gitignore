@@ -2,7 +2,7 @@
 # Node.js dependencies
 node_modules/
 
-# pnpm package manager files (if not using pnpm, you can remove these)
+# pnpm package manager files
 .pnp
 .pnp.js
 
