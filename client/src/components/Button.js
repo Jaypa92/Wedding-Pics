@@ -34,7 +34,7 @@ const Button = ({setUpdateUI}) => {
         })
 
         try {
-            const response = await axios.post('http://parriswedding.com/api/save', formData)
+            const response = await axios.post('http://18.116.44.77/api/save', formData)
             console.log(response.data);
             setUpdateUI(response.data._id);
             navigate('/');
