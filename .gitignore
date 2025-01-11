@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+logs/
+
+# Build output
+dist/
+build/
+
+# Temporary/system files
+.DS_Store    # macOS
+Thumbs.db    # Windows
+*.swp        # Vim swap files
+
+# Coverage reports
+coverage/
+
+# SSL keys or sensitive config files
+*.pem
+config/*.json
