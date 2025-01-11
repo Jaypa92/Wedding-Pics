@@ -7,7 +7,7 @@ const Grid = ({photos}) => {
 
     const handleDelete = (e, id) => {
         e.preventDefault();
-        axios.delete(`http://18.116.44.77/api/delete/${id}`)
+        axios.delete(`http://parriswedding.com/api/delete/${id}`)
             .then(res=>{
                 console.log(res);
                 navigate('/');
@@ -23,10 +23,10 @@ const Grid = ({photos}) => {
                     <div className='grid_item'>
                         {photo.includes('.jpg') || photo.includes('.jpeg') || photo.includes('.png') ? (
                             <img 
-                            src={`http://localhost:5000/uploads/${photo}`} 
+                            src={`http://parriswedding.com/uploads/${photo}`} 
                             alt="grid_image" />
                         ) : photo.includes('.mp4') || photo.includes('.av1') || photo.includes('.mov') ? (
-                            <video src={`http://localhost:5000/uploads/${photo}`} controls></video>
+                            <video src={`http://parriswedding.com/uploads/${photo}`} controls></video>
                         ) : null}
                     </div>
                     <button onClick={(e) => {handleDelete(e,_id)}} id='download'style={{display:'none'}}>Delete</button>
