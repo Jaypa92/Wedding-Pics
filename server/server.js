@@ -44,8 +44,6 @@ db.on('error', (err) => {
     console.log("Error connecting to MongoDB", err);
 });
 
-app.use(UploadRoute);
-
 app.listen(PORT, () => {
     console.log(`Server started at port: ${PORT}`);
 })
