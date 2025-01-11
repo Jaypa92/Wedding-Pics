@@ -23,10 +23,10 @@ const Grid = ({photos}) => {
                     <div className='grid_item'>
                         {photo.includes('.jpg') || photo.includes('.jpeg') || photo.includes('.png') ? (
                             <img 
-                            src={`https://parriswedding.com/uploads/${photo}`} 
+                            src={`http://localhost:5000/uploads/${photo}`} 
                             alt="grid_image" />
                         ) : photo.includes('.mp4') || photo.includes('.av1') || photo.includes('.mov') ? (
-                            <video src={`https://parriswedding.com/uploads/${photo}`} controls></video>
+                            <video src={`http://localhost:5000/uploads/${photo}`} controls></video>
                         ) : null}
                     </div>
                     <button onClick={(e) => {handleDelete(e,_id)}} id='download'style={{display:'none'}}>Delete</button>
