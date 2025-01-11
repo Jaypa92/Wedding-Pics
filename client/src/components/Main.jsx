@@ -13,7 +13,7 @@ const Main = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:5000/api/get')
+        axios.get('https://localhost:5000/api/get')
             .then((res) => {
                 console.log(res.data);
                 setPhotos(res.data);
