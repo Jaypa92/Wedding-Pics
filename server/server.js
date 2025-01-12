@@ -27,16 +27,16 @@ app.use(UploadRoute);
 app.use('/uploads', express.static(path.join(__dirname, '/public/uploads')));
 app.use(express.static(path.join(__dirname, '../client/build')))
 
-// app.get("*", (req, res) => {
-//     res.sendFile(
-//         path.join(__dirname, "../client/build","index.html"),
-//         function (err) {
-//             if (err) {
-//                 res.status(500).send(err);
-//             }
-//         }
-//     )
-// })
+app.get("*", (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "../client/build","index.html"),
+        function (err) {
+            if (err) {
+                res.status(500).send(err);
+            }
+        }
+    )
+})
 
 mongoose.connect(uri);
 
