@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser');
-const uri = "mongodb+srv://besteverwas92:Iamjaypa92@cluster.xkq9il7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const uri = "mongodb+srv://besteverwas92:Iamjaypa92@cluster0.xkq9il7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 require("dotenv").config()
 const path = require('path')
 
@@ -10,7 +10,7 @@ const UploadRoute = require('./routes/uploadRoute');
 
 const app = express();
 
-app.use(cors)
+app.use(cors())
 app.use(cookieParser());
 app.use(express.json());
 
