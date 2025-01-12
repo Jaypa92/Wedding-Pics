@@ -13,7 +13,7 @@ const Main = () => {
 
     useEffect(() => {
 
-        axios.get('http://parriswedding.com/api/get')
+        axios.get('https://parriswedding.com/api/get')
             .then((res) => {
                 console.log(res.data);
                 setPhotos(res.data);
