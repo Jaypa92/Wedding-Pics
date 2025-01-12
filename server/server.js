@@ -16,13 +16,6 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
-app.use(
-    cors({
-        origin: 'http://localhost:3000', // Your frontend URL
-        credentials: true, // Enable cookies to be sent with requests
-    })
-);
-
 app.use(UploadRoute);
 app.use('/uploads', express.static(path.join(__dirname, '/public/uploads')));
 app.use(express.static(path.join(__dirname, '../client/build')))
