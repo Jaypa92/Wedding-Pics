@@ -17,7 +17,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 
 app.use(UploadRoute);
-//app.use('/uploads', express.static(path.join(__dirname, '/public/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '/public/uploads')));
 app.use(express.static(path.join(__dirname, '../client/build')))
 
 app.get("*", (req, res) => {
