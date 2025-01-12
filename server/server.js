@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser');
-const uri = "mongodb+srv://besteverwas92:Iamjaypa92@cluster0.xkq9il7.mongodb.net/Wedding?retryWrites=true&w=majority&ssl=true&appName=Cluster0"
+const uri = "mongodb+srv://besteverwas92:Iamjaypa92@cluster0.xkq9il7.mongodb.net/Wedding?retryWrites=true&w=majority&appName=Cluster0"
 require("dotenv").config()
 const path = require('path')
 
@@ -10,27 +10,33 @@ const UploadRoute = require('./routes/uploadRoute');
 
 const app = express();
 
-
+app.use(cors)
 app.use(cookieParser());
-app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
-app.use(express.static(path.join(__dirname, '../client/build')))
+app.use(
+    cors({
+        origin: 'http://localhost:3000', // Your frontend URL
+        credentials: true, // Enable cookies to be sent with requests
+    })
+);
+
 app.use(UploadRoute);
 app.use('/uploads', express.static(path.join(__dirname, '/public/uploads')));
+app.use(express.static(path.join(__dirname, '../client/build')))
 
-app.get("*", (req, res) => {
-    res.sendFile(
-        path.join(__dirname, "../client/build","index.html"),
-        function (err) {
-            if (err) {
-                res.status(500).send(err);
-            }
-        }
-    )
-})
+// app.get("*", (req, res) => {
+//     res.sendFile(
+//         path.join(__dirname, "../client/build","index.html"),
+//         function (err) {
+//             if (err) {
+//                 res.status(500).send(err);
+//             }
+//         }
+//     )
+// })
 
 mongoose.connect(uri);
 
