@@ -31,22 +31,6 @@ app.get("*", (req, res) => {
     )
 })
 
-mongoose.connect(uri);
-
-const db = mongoose.connection;
-
-db.on('connected', () => {
-    console.log('connected to mongodb');
-});
-
-db.on('error', (err) => {
-    console.log("Error connecting to MongoDB", err);
-});
-
-app.listen(PORT, () => {
-    console.log(`Server started at port: ${PORT}`);
-})
-
 const User = mongoose.model('User', {
     userId: String,
     lastVisit: Date,
@@ -64,3 +48,19 @@ app.use(async (req, res, next) => {
 function createUserId(){
     return Math.random().toString(36).substring(7);
 }
+
+mongoose.connect(uri);
+
+const db = mongoose.connection;
+
+db.on('connected', () => {
+    console.log('connected to mongodb');
+});
+
+db.on('error', (err) => {
+    console.log("Error connecting to MongoDB", err);
+});
+
+app.listen(PORT, () => {
+    console.log(`Server started at port: ${PORT}`);
+})
