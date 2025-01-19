@@ -36,7 +36,7 @@ const Button = ({setUpdateUI}) => {
         try {
             const response = await axios.post('http://localhost:5000/api/save', formData)
             console.log(response.data);
-            setUpdateUI(response.data._id);
+            setUpdateUI(Date.now());
             navigate('/');
         } catch (error) {
             console.error('Error uploading files', error);
