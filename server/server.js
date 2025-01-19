@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require('cookie-parser');
-const uri = "mongodb+srv://besteverwas92:Iamjaypa92@cluster0.xkq9il7.mongodb.net/Wedding?retryWrites=true&w=majority&ssl=true&appName=Cluster0"
 require("dotenv").config()
+const uri = process.env.MONGO_URI;
 const path = require('path')
 
 const UploadRoute = require('./routes/uploadRoute');
