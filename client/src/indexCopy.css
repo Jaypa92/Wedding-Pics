@@ -11,13 +11,13 @@ a{
   text-decoration: none;
 }
 
-.body{
+.body::before{
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: auto;
+  height: 100vh;
   background-image: url('/public/eucalyptus.jpg');
   background-size: cover;
   background-position: center;
@@ -64,8 +64,6 @@ nav{
 
 .box{
   height: 100%;
-  min-height: 300px;
-  min-width: 300px;
   width: 100%;
   overflow: hidden;
 }
@@ -80,18 +78,6 @@ nav{
   margin: 2rem;
   cursor: pointer;
   z-index: 1;
-}
-
-.button-default{
-  background: rgba(243, 242, 242, 0.089);
-  border: none;
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-}
-
-.button-default:hover{
-  opacity: 0.6;
 }
 
 .container{
@@ -127,19 +113,16 @@ nav{
   height: 10%;
 }
 
-.gallery{
-  padding: 2%;
-}
-
 .grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
-  grid-auto-rows: 300px;
-  gap: 1rem;
-  background-color: rgb(200,200,200);
+  margin-top: 5%;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
+  gap: 1rem;
   padding: 2%;
-  border-radius: 0.8%;
+  background-color: rgb(200,200,200);
+  width: 100%;
+  height: auto;
 }
 
 .grid_item {
@@ -152,20 +135,11 @@ nav{
   object-fit: contain;
 }
 
-.grid_item .button-icon{
-  height:30%;
-  width: auto;
-  object-fit: contain;
-}
-
 .grid_item img, .grid_item video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-
-.grid_item video{
   background-color: black;
+  object-fit: cover;
 }
 
 .intro{
@@ -276,3 +250,69 @@ margin-top: 3.5%;
   height: 10%;
 }
 
+@media screen and (max-width: 768px) {
+
+  .box{
+    display: flex;
+    justify-content: center;
+  }
+
+  .grid{
+    grid-template-columns:repeat(auto-fill, 300px);
+    grid-auto-rows: minmax(300px, 300px);
+    align-items: center;
+    height: 100%;
+  }
+
+  .grid_item{
+    max-width: 300px;
+    max-height: 300px;
+    overflow: hidden;
+  }
+
+  .grid_item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .heading{
+    height: 5rem;
+    margin-top: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .preview_grid{
+    height: 350px;
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .intro-box{
+    height: 90%;
+    width: 90%;
+    overflow-y: auto;
+  }
+.name img{
+  height: 100%;
+  width: 13%;
+}
+}
+
+@media screen and (min-width: 769px) {
+
+  .grid{
+    grid-auto-rows: minmax(300px, 300px);
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, 300px);
+  }
+
+  .grid_item{
+    height: 300px;
+  }
+
+}

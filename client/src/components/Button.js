@@ -34,7 +34,7 @@ const Button = ({setUpdateUI}) => {
         })
 
         try {
-            const response = await axios.post('https://parriswedding.com/api/save', formData)
+            const response = await axios.post('http://localhost:5000/api/save', formData)
             console.log(response.data);
             setUpdateUI(Date.now());
             navigate('/');
