@@ -33,10 +33,10 @@ const Grid = ({ photos }) => {
                             <button onClick={(e) => { handleDelete(e, _id) }} id='download' style={{ display: 'none' }}>Delete</button>
                         </div>
                     ))}
-                    <div className="grid_item">
-                        <button className='button-default'>
-                            <img className='button-icon' src="/addFiles.png" alt='img' />
-                        </button>
+                    <div className="grid_item grid_label">
+                        <label htmlFor='file_picker' className='label-default'>
+                            <img className='label-icon' src="/addFiles.png" alt='img' />
+                        </label>
                     </div>
                 </div>
             </div>

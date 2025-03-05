@@ -17,7 +17,7 @@ a{
   top: 0;
   left: 0;
   width: 100%;
-  height: auto;
+  height: 100vh;
   background-image: url('/public/eucalyptus.jpg');
   background-size: cover;
   background-position: center;
@@ -82,17 +82,7 @@ nav{
   z-index: 1;
 }
 
-.button-default{
-  background: rgba(243, 242, 242, 0.089);
-  border: none;
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-}
 
-.button-default:hover{
-  opacity: 0.6;
-}
 
 .container{
   background-color: rgba(255, 255, 255, 0.5);
@@ -152,9 +142,9 @@ nav{
   object-fit: contain;
 }
 
-.grid_item .button-icon{
-  height:30%;
-  width: auto;
+.grid_item .label-icon{
+  height:20%;
+  width: 20%;
   object-fit: contain;
 }
 
@@ -162,6 +152,26 @@ nav{
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.grid_label{
+  background: rgba(243, 242, 242, 0.329);
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.label-default{
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.grid_label:hover{
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .grid_item video{
