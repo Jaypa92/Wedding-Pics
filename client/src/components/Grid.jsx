@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { FilePlus2 } from 'lucide-react';
 
 const Grid = ({ photos }) => {
 
@@ -15,8 +16,9 @@ const Grid = ({ photos }) => {
     }
 
     return (
-        <>
-            <h1 className='heading' >Our Gallery</h1>
+        <>  
+            <h1 className='heading' >Brittney & Justin Parris</h1>
+            <h2 className='date'>04/14/2024</h2>
             <div className="gallery">
                 <div className="grid">
                     {photos.map(({ photo, _id }) => (
@@ -35,7 +37,8 @@ const Grid = ({ photos }) => {
                     ))}
                     <div className="grid_item grid_label">
                         <label htmlFor='file_picker' className='label-default'>
-                            <img className='label-icon' src="/addFiles.png" alt='img' />
+                            {/* <img className='label-icon' src="/addFiles.png" alt='img' /> */}
+                            <FilePlus2 size={100}/>
                         </label>
                     </div>
                 </div>
