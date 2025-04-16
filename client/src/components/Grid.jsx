@@ -18,7 +18,7 @@ const Grid = ({ photos }) => {
     return (
         <>  
             <h1 className='heading' >Brittney & Justin Parris</h1>
-            <h2 className='date'>04/14/2024</h2>
+            <h2 className='date'>04|14|2024</h2>
             <div className="gallery">
                 <div className="grid">
                     {photos.map(({ photo, _id }) => (

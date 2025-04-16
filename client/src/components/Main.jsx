@@ -62,6 +62,9 @@ const Main = () => {
             </div>
             )
             }
+            <footer>
+                <p>© 2024 Website Made By Justin Parris</p>
+            </footer>
         </div>
     )
 }

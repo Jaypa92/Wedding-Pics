@@ -123,8 +123,15 @@ nav{
   height: 10%;
 }
 
+footer p{
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 1%;
+  color: white;
+}
+
 .gallery{
-  padding: 0 2%;
+  padding: 0 2% 2% 2%;
 }
 
 .grid{
