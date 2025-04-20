@@ -1,25 +1,35 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const Navbar = () => {
 
-    document.addEventListener("DOMContentLoaded", function(){
-        var scroll = document.getElementById('scroll');
+    const navbarRef = useRef(null);
 
-        scroll.addEventListener('click', function() {
-            window.scrollTo({
-                top:0,
-                behavior:"smooth"
-            })
-        })
-    })
+    useEffect(() => {
+
+        const navbar = navbarRef.current;
+
+        const handleScroll = () => {
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add("show");
+            } else {
+                navbar.classList.remove("show");
+            }
+        };
+
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-    <nav>
-        <div className="nav-logo">
-            Parris Family Wedding 
-        </div>
-        <a href="#" id='scroll'>Back To Top</a>
-    </nav>
+        <nav ref={navbarRef}>
+            <div className="nav-logo">
+                Parris Family Wedding
+            </div>
+            <a href="#" id='scroll'>Back To Top</a>
+        </nav>
     )
 }
 
