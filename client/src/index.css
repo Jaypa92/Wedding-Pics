@@ -150,7 +150,7 @@ footer p{
   grid-auto-rows: 300px;
   gap: 1rem;
   background-color: rgb(200,200,200);
-  justify-content: center;
+  justify-content: flex-start;
   padding: 2%;
   border-radius: 0.8%;
 }
