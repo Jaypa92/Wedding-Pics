@@ -178,7 +178,7 @@ footer p{
 }
 
 .grid_label{
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(2px);
   height: 100%;
   width: 100%;
   cursor: pointer;
@@ -195,8 +195,9 @@ footer p{
 }
 
 .grid_label:hover{
-  opacity: 0.6;
+  opacity: 0.7;
   cursor: pointer;
+  background-color: rgba(255,255,255,0.8);
 }
 
 .grid_item video{
