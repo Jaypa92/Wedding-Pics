@@ -40,6 +40,7 @@ const Grid = ({ photos }) => {
                             {/* <img className='label-icon' src="/addFiles.png" alt='img' /> */}
                             <FilePlus2 size={100}/>
                         </label>
+                        <h2>Upload File</h2>
                     </div>
                 </div>
             </div>
