@@ -4,6 +4,14 @@ const uploadSchema = new mongoose.Schema({
         type: String, 
         required: true,
     },
+    fileType:{
+        type: String,
+        required: true,
+    },
+    publicId:{
+        type: String,
+        required: true,
+    },
 }, 
 {timestamps: true}
 );

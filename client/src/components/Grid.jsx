@@ -8,7 +8,7 @@ const Grid = ({ photos }) => {
 
     const handleDelete = (e, id) => {
         e.preventDefault();
-        axios.delete(`http://localhost:5000/api/delete/${id}`)
+        axios.delete(`http://localhost:5000/api/upload/delete/${id}`)
             .then(res => {
                 console.log(res);
                 navigate('/');
@@ -21,15 +21,15 @@ const Grid = ({ photos }) => {
             <h2 className='date'>04|14|2024</h2>
             <div className="gallery">
                 <div className="grid">
-                    {photos.map(({ photo, _id }) => (
+                    {photos.length > 0 && photos.map(({ photo, fileType, _id }) => (
                         <div key={_id} className='box'>
                             <div className='grid_item'>
-                                {photo.includes('.jpg') || photo.includes('.jpeg') || photo.includes('.png') ? (
+                                {fileType?.startsWith('image') ? (
                                     <img
-                                        src={`http://localhost:5000/uploads/${photo}`}
+                                        src={photo}
                                         alt="grid_image" />
-                                ) : photo.includes('.mp4') || photo.includes('.av1') || photo.includes('.mov') ? (
-                                    <video src={`http://localhost:5000/uploads/${photo}`} controls></video>
+                                ) : fileType?.startsWith('video') ? (
+                                    <video src={photo} controls></video>
                                 ) : null}
                             </div>
                             <button onClick={(e) => { handleDelete(e, _id) }} id='download' style={{ display: 'none' }}>Delete</button>
