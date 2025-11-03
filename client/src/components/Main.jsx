@@ -20,11 +20,11 @@ const Main = () => {
             })
             .catch((err) => console.log(err))
 
-            const introState = localStorage.getItem('showIntro');
-            if(introState === null) {
-                setIntro(true);
-                localStorage.setItem('showIntro','true');
-            }
+        const introState = localStorage.getItem('showIntro');
+        if (introState === null) {
+            setIntro(true);
+            localStorage.setItem('showIntro', 'true');
+        }
 
     }, [updateUI]);
 
@@ -42,26 +42,40 @@ const Main = () => {
 
     }, []);
 
+    useEffect(() => {
+        if (showIntro) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        }
+    }, [showIntro]);
+
     const handleOK = (e) => {
-            setIntro(false);
+        setIntro(false);
     }
 
     return (
         <div className='body'>
-            {!showIntro && <Navbar></Navbar>}
-            <Grid photos={photos}></Grid>
-            <Button setUpdateUI={setUpdateUI}></Button>
-            { showIntro && (
-            <div className='intro' style={{visibility: 'visible'}} >
-                <div className='intro-box'>
-                    <h1 className='name'><span><img  src='/eiffel-tower-white.png' alt='tower' /></span>Parris<span><img src='/eiffel-tower-white.png' alt='tower' /></span></h1>
-                    <h1>Welcome to the photo gallery of the newlywed Parris family!</h1>
-                    <h1>If you have any files to share from the wedding, please upload them for all to see and thank you again for attending!</h1>
-                    <button onClick={handleOK} >OK</button>
-                </div>
+            <div className="main-content">
+                {!showIntro && <Navbar></Navbar>}
+                <Grid photos={photos}></Grid>
+                <Button setUpdateUI={setUpdateUI}></Button>
+                {showIntro && (
+                    <div className='intro' style={{ visibility: 'visible' }} >
+                        <div className='intro-box'>
+                            <h1 className='name'><span><img src='/eiffel-tower-white.png' alt='tower' /></span>Parris<span><img src='/eiffel-tower-white.png' alt='tower' /></span></h1>
+                            <h1>Welcome to the photo gallery of the newlywed Parris family!</h1>
+                            <h1>If you have any files to share from the wedding, please upload them for all to see and thank you again for attending!</h1>
+                            <button onClick={handleOK} >OK</button>
+                        </div>
+                    </div>
+                )
+                }
             </div>
-            )
-            }
             <footer>
                 <p>© 2024 Website Made By Justin Parris</p>
             </footer>

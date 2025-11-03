@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {AiFillPlusCircle} from 'react-icons/ai';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import { FilePlus2 } from 'lucide-react';
 
 const Button = ({setUpdateUI}) => {
     const navigate = useNavigate();
@@ -9,8 +10,9 @@ const Button = ({setUpdateUI}) => {
     const fileInputRef = useRef(null);
 
     const handleChange = (e) => {
-        const files = e.target.files;
-        setSelectedFiles([...selectedFiles, ...files]);
+        const files = Array.from(e.target.files);
+        setSelectedFiles(prev => [...prev, ...files]);
+        e.target.value = '';
     }
 
     useEffect(() => {
@@ -69,16 +71,27 @@ const Button = ({setUpdateUI}) => {
                 <div className='preview' >
                     {selectedFiles.map((file, index) => (
                         <div className='preview_grid' key={file.name}>
-                            <div className='preview_item' >
+                            <div className='preview_item' style={{position: 'relative'}} >
                                 {file.name.includes('.jpg') || file.name.includes('.jpeg') || file.name.includes('.png') ? (
                                     <img src={URL.createObjectURL(file)} alt="file"/>
                                     ) : file.name.includes('.mp4') || file.name.includes('.mov') || file.name.includes('.av1') ? (
                                         <video src={URL.createObjectURL(file)} type={file.type} controls></video>
                                         ): null}
+                                <span
+                                    className="delete-x"
+                                    onClick={() => previewDel(index)}
+                                >
+                                    X
+                                </span>
                             </div>
-                            <button className='delete' onClick={() => previewDel(index)} >Delete</button>
                         </div>
                         ))}
+                        <div className="grid_item grid_label">
+                        <label htmlFor='file_picker' className='label-default'>
+                            <FilePlus2 size={100}/>
+                            <h2>Upload File</h2>
+                        </label>
+                    </div>
                 </div>
                 <div className='upload-button'>
                     <button className='upload' onClick={handleUpload}>Upload</button>

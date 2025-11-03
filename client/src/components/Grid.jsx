@@ -37,10 +37,9 @@ const Grid = ({ photos }) => {
                     ))}
                     <div className="grid_item grid_label">
                         <label htmlFor='file_picker' className='label-default'>
-                            {/* <img className='label-icon' src="/addFiles.png" alt='img' /> */}
                             <FilePlus2 size={100}/>
+                            <h2>Upload File</h2>
                         </label>
-                        <h2>Upload File</h2>
                     </div>
                 </div>
             </div>
