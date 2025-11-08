@@ -17,6 +17,16 @@ const Button = ({setUpdateUI}) => {
 
     useEffect(() => {
         console.log(selectedFiles);
+
+        if(selectedFiles.length > 0){
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+        }
     }, [selectedFiles]);
 
     const handleClose = (e) => {
@@ -87,11 +97,11 @@ const Button = ({setUpdateUI}) => {
                         </div>
                         ))}
                         <div className="grid_item grid_label">
-                        <label htmlFor='file_picker' className='label-default'>
-                            <FilePlus2 size={100}/>
-                            <h2>Upload File</h2>
-                        </label>
-                    </div>
+                            <label htmlFor='file_picker' className='label-default'>
+                                <FilePlus2 size={100}/>
+                                <h2>Upload File</h2>
+                            </label>
+                        </div>
                 </div>
                 <div className='upload-button'>
                     <button className='upload' onClick={handleUpload}>Upload</button>
