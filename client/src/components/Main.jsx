@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Navbar from './Navbar'
 import Button from "./Button";
 import Grid from './Grid';
@@ -7,9 +7,15 @@ import axios from 'axios';
 
 const Main = () => {
 
+    const fileInputRef = useRef(null);
+
     const [photos, setPhotos] = useState([]);
     const [updateUI, setUpdateUI] = useState('');
     const [showIntro, setIntro] = useState(false);
+    const [showPasswordModal, setShowPasswordModal] = useState(false);
+    const [uploadAuthorized, setUploadAuthorized] = useState(false);
+    const [uploadKey, setUploadKey] = useState("");
+    const [passwordError, setPasswordError] = useState("");
 
     useEffect(() => {
 
@@ -58,12 +64,81 @@ const Main = () => {
         setIntro(false);
     }
 
+    const verifyPassword = async () => {
+
+        try {
+            const res = await axios.post(
+                "http://localhost:5000/api/upload/verify-password",
+                { password: uploadKey}
+            );
+
+            if(res.data.success) {
+                handlePasswordSuccess();
+            }
+        } catch {
+            if(uploadKey.length === 0){
+                setPasswordError("Please Enter Password")
+            } else {
+                setPasswordError("Incorrect Password");
+            }
+        }
+    }
+
+    const handleClose = () => {
+        setShowPasswordModal(false);
+        setUploadKey("");
+        setPasswordError("");
+    }
+
+    const handlePasswordSuccess = () => {
+        setUploadAuthorized(true);
+        setShowPasswordModal(false);
+        setUploadKey("");
+        setPasswordError("");
+
+        setTimeout(() => {
+            fileInputRef.current?.click();
+        }, 100);
+    }
+
     return (
         <div className='body'>
+            {showPasswordModal && (
+                <div className="container">
+                    <div className='head'>
+                        <img src='/close.png' alt='close' onClick={handleClose} />
+                    </div>
+                    <div className="modal-content">
+                        <h1>Enter Upload Password</h1>
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={uploadKey}
+                            onChange={(e) => setUploadKey(e.target.value)}
+                        />
+                        {passwordError && <div className='error-message'>{passwordError}</div>}
+                        <div className="modal-buttons">
+                            <button onClick={handleClose}>Cancel</button>
+                            <button onClick={verifyPassword}>Submit</button>
+                        </div>
+                    </div>
+                </div>
+            )}
             <div className="main-content">
                 {!showIntro && <Navbar></Navbar>}
-                <Grid photos={photos}></Grid>
-                <Button setUpdateUI={setUpdateUI}></Button>
+                <Grid photos={photos}
+                    uploadAuthorized={uploadAuthorized}
+                    onRequestUpload={() => setShowPasswordModal(true)}
+                    fileInputRef={fileInputRef}>
+                </Grid>
+                <Button 
+                    setUpdateUI={setUpdateUI}
+                    uploadAuthorized={uploadAuthorized}
+                    onRequestUpload={() => setShowPasswordModal(true)}
+                    fileInputRef={fileInputRef}
+                    passwordError={passwordError}
+                    setPasswordError={setPasswordError}>
+                </Button>
                 {showIntro && (
                     <div className='intro' style={{ visibility: 'visible' }} >
                         <div className='intro-box'>

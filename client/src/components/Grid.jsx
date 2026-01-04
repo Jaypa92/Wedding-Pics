@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { FilePlus2 } from 'lucide-react';
 
-const Grid = ({ photos }) => {
+const Grid = ({ photos, uploadAuthorized, onRequestUpload, fileInputRef }) => {
 
     const navigate = useNavigate();
 
@@ -36,7 +36,14 @@ const Grid = ({ photos }) => {
                         </div>
                     ))}
                     <div className="grid_item grid_label">
-                        <label htmlFor='file_picker' className='label-default'>
+                        <label className='label-default'
+                        onClick={() => {
+                            if(!uploadAuthorized){
+                                onRequestUpload();
+                            } else{
+                                fileInputRef.current?.click();
+                            }
+                        }}>
                             <FilePlus2 size={100}/>
                             <h2>Upload File</h2>
                         </label>

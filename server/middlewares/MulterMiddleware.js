@@ -1,11 +1,16 @@
 const multer = require('multer');
-const {v4: uuidv4} = require('uuid');
-const path = require('path');
 
 const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {
-    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png', 'video/mp4', 'video/av1', 'video/mov']
+    const allowedFileTypes = [
+        'image/jpeg',
+        'image/png',
+        'image/webp',
+        'video/mp4',
+        'video/quicktime'
+    ];
+
     if(allowedFileTypes.includes(file.mimetype)){
         cb(null, true)
     }else{
@@ -13,6 +18,7 @@ const fileFilter = (req, file, cb) => {
     }
 }
 
-const uploadMiddleware = multer({storage, fileFilter})
+const uploadMiddleware = multer({storage, limits: { fileSize: 10 * 1024 * 1024},
+    fileFilter})
 
 module.exports = uploadMiddleware;

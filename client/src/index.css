@@ -120,6 +120,9 @@ nav.show{
   box-shadow: 0 0px 10px rgb(0,0,0,0.6);
   padding: 1%;
   padding-bottom: 2%;
+  display: flex;
+  flex-direction: column;
+  z-index: 10000;
 }
 
 .close{
@@ -167,6 +170,17 @@ nav.show{
 .delete-x:hover{
   background-color: white;
   color: black;
+}
+
+.error-message{
+  color: #e74c3c;
+  font-size: 14px;
+  font-weight: 800;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: left;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 footer{
@@ -314,6 +328,53 @@ margin-bottom: 3%;
 
 .main-content{
   flex: 1;
+}
+
+.modal-buttons{
+  display: flex;
+  gap: 1rem;
+}
+
+.modal-buttons button{
+  border: 2px solid white;
+  border-radius: 10px;
+
+}
+
+button:hover{
+  cursor: pointer;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    #6c8478;
+}
+
+.modal-content{
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+  flex: 1 1 auto;
+  color: aliceblue;
+}
+
+.modal-content input, .modal-content button{
+  margin-top: 2rem;
+  height: 42px;
+  font-size: 16px;
+}
+
+.modal-content button{
+  width: 100px;
+  color: aliceblue;
+  background-color: #6c8478;
+}
+
+.modal-content input{
+  width: 80%;
+  max-width: 350px;
+  font-family: 'Lora', serif;
 }
 
 .name{

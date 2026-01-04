@@ -50,6 +50,16 @@ router.post('/api/save', uploadMiddleware.array('photo'), async (req, res) => {
 
 });
 
+router.post('/verify-password', (req, res) => {
+    const { password } = req.body;
+
+    if(password === process.env.UPLOAD_KEY) {
+        return res.json({ success: true});
+    }
+
+    res.status(401).json({ success: false});
+})
+
 router.delete('/delete/:id', async (req, res) => {
     try{
         const file = await UploadModel.findById(req.params.id);
