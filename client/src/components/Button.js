@@ -58,7 +58,7 @@ const Button = ({ setUpdateUI, uploadAuthorized, onRequestUpload, fileInputRef, 
         })
 
         try {
-            const response = await axios.post('http://localhost:5000/api/upload/api/save', formData)
+            const response = await axios.post('https://wedding-pics.onrender.com/api/upload/api/save', formData)
             console.log(response.data);
             setUpdateUI(Date.now());
             setSelectedFiles([]);

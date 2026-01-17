@@ -19,7 +19,7 @@ const Main = () => {
 
     useEffect(() => {
 
-        axios.get('http://localhost:5000/api/upload/get')
+        axios.get('https://wedding-pics.onrender.com/api/upload/get')
             .then((res) => {
                 console.log(res.data);
                 setPhotos(res.data);
@@ -68,7 +68,7 @@ const Main = () => {
 
         try {
             const res = await axios.post(
-                "http://localhost:5000/api/upload/verify-password",
+                "https://wedding-pics.onrender.com/api/upload/verify-password",
                 { password: uploadKey}
             );
 

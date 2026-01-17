@@ -9,7 +9,7 @@ const Grid = ({ photos, uploadAuthorized, onRequestUpload, fileInputRef }) => {
     const handleDelete = (e, id) => {
         console.log("works")
         e.preventDefault();
-        axios.delete(`http://localhost:5000/api/upload/delete/${id}`)
+        axios.delete(`https://wedding-pics.onrender.com/api/upload/delete/${id}`)
             .then(res => {
                 console.log(res);
                 navigate('/');
