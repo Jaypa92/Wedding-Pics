@@ -128,9 +128,12 @@ const Button = ({ setUpdateUI, uploadAuthorized, onRequestUpload, fileInputRef, 
                                 </div>
                             </div>
                         ))}
-                        <div className="grid_item grid_label">
+                        <div className="grid_item grid_label"
+                            onClick={() => {fileInputRef.current.click()}} 
+                        >
                             <label className='label-default'>
-                                <FilePlus2 size={100} />
+                                <FilePlus2 size={100}
+                                />
                                 <h2>Upload File</h2>
                             </label>
                         </div>

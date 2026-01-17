@@ -7,6 +7,7 @@ const Grid = ({ photos, uploadAuthorized, onRequestUpload, fileInputRef }) => {
     const navigate = useNavigate();
 
     const handleDelete = (e, id) => {
+        console.log("works")
         e.preventDefault();
         axios.delete(`http://localhost:5000/api/upload/delete/${id}`)
             .then(res => {
