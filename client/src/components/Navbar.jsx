@@ -23,12 +23,21 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const scrollToTop = () => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
     return (
         <nav ref={navbarRef}>
             <div className="nav-logo">
                 Parris Family Wedding
             </div>
-            <a href="#" id='scroll'>Back To Top</a>
+            <button
+                onClick={scrollToTop}
+                className='nav-link'
+                aria-label='Scroll to top'>
+                Back To Top
+            </button>
         </nav>
     )
 }
