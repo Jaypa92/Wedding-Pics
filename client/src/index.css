@@ -76,9 +76,8 @@ nav{
 .nav-link {
   background: none;
   text-decoration: none;
-  color: aliceblue;
   border: none;
-  color: inherit;
+  color: white;
   cursor: pointer;
   font: inherit;
   padding: 0;
