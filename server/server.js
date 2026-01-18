@@ -17,7 +17,8 @@ app.use(express.json());
 app.use(cors({
     origin: [
         "http://localhost:3000",
-        "https://your-frontend-domain.vercel.app"
+        "https://wedding-pics.vercel.app",
+        "https://wedding-pics-git-main-justins-projects-dbee8e72.vercel.app"
     ],
     credentials: true
 }));
@@ -47,11 +48,11 @@ app.use(async (req, res, next) => {
             { upsert: true }
         );
         res.cookie('userId', userId, {
-    maxAge: 900000,
-    httpOnly: true,
-    sameSite: "None",
-    secure: true
-});
+            maxAge: 900000,
+            httpOnly: true,
+            sameSite: "None",
+            secure: true
+        });
     } catch (err) {
         console.error("User tracking error:", err);
     }
