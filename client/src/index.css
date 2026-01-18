@@ -75,6 +75,8 @@ nav{
 
 .nav-link {
   background: none;
+  text-decoration: none;
+  color: aliceblue;
   border: none;
   color: inherit;
   cursor: pointer;
