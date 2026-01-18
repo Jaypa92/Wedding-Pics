@@ -20,20 +20,21 @@ const allowedOrigins = [
     "https://www.parriswedding.com",
 ];
 
-app.use((req, res, next) => {
-    const origin = req.headers.origin;
+const corsOptions = {
+    origin: (origin, callback) => {
+        if(!origin || allowedOrigins.includes(origin) ||  /^https:\/\/wedding-pics.*\.vercel\.app$/.test(origin) ) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,
+    allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"]
+}
 
-    if (
-        allowedOrigins.includes(origin) || 
-        (origin && origin.match(/^https:\/\/wedding-pics.*\.vercel\.app$/))
-    ) {
-        res.header("Access-Control-Allow-Origin", origin);
-        res.header("Access-Control-Allow-Credentials", "true");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    }
+app.use(cors(corsOptions));
 
-    next();
-});
+app.options("*", cors(corsOptions));
 
 const PORT = process.env.PORT || 5000;
 
