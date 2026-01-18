@@ -73,6 +73,16 @@ nav{
   pointer-events: none;
 }
 
+.nav-link {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline; /* optional */
+  font: inherit;
+  padding: 0;
+}
+
 .nav-logo{
   letter-spacing: 1px;
   font-size: 20px;
