@@ -16,7 +16,8 @@ app.use(express.json());
 
 const allowedOrigins = [
     "http://localhost:3000",          
-    "https://wedding-pics.vercel.app" 
+    "https://wedding-pics.vercel.app",
+    "https://www.parriswedding.com",
 ];
 
 app.use((req, res, next) => {
