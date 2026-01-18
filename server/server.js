@@ -18,7 +18,8 @@ app.use(cors({
     origin: [
         "http://localhost:3000",
         "https://wedding-pics.vercel.app",
-        "https://wedding-pics-git-main-justins-projects-dbee8e72.vercel.app"
+        "https://wedding-pics-git-main-justins-projects-dbee8e72.vercel.app",
+        "https://wedding-pics-gray.vercel.app",
     ],
     credentials: true
 }));
