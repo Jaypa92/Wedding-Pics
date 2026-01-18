@@ -14,15 +14,25 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 
-app.use(cors({
-    origin: [
-        "http://localhost:3000",
-        "https://wedding-pics.vercel.app",
-        "https://wedding-pics-git-main-justins-projects-dbee8e72.vercel.app",
-        "https://wedding-pics-gray.vercel.app",
-    ],
-    credentials: true
-}));
+const allowedOrigins = [
+    "http://localhost:3000",          
+    "https://wedding-pics.vercel.app" 
+];
+
+app.use((req, res, next) => {
+    const origin = req.headers.origin;
+
+    if (
+        allowedOrigins.includes(origin) || 
+        (origin && origin.match(/^https:\/\/wedding-pics.*\.vercel\.app$/))
+    ) {
+        res.header("Access-Control-Allow-Origin", origin);
+        res.header("Access-Control-Allow-Credentials", "true");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    }
+
+    next();
+});
 
 const PORT = process.env.PORT || 5000;
 
